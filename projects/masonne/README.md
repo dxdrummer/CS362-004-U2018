@@ -1,1 +1,1 @@
-Neale Mason masonne@oregonstate.edu
+s is my assignment-1 submission!
