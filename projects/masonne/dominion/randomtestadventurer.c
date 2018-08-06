@@ -15,13 +15,14 @@ Description: Here I test the adventurer card
 
 
 int failures, tester, numTries;
+int choice1, choice2, choice3;
 //following code borrows heavily from playdom.c for implementation
 int main(){
  int i=0;
- numTries=10000;
+ numTries=100;
    printf ("Testing ADVENTURER: ");
  
- for(i=0; i<numTries; i++){
+
  
  struct gameState G, H; //using 2 gamestates to keep track of "before card" and "after card"
   int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
@@ -31,18 +32,25 @@ int main(){
 
   
 //int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct gameState *state);
-  initializeGame(i, k, 20, &G);
-
+  
+  tester = 0;
 
   int test_Result=1;
   
+	initializeGame(2, k, 20, &G);
+	for(i=0; i<100; i++){
+  int test_Result=1;
 
- int choice1=0, choice2=0, choice3=0;
+	choice1= rand() % (200) + -200; 
+	  choice2= rand() % (200) + -200;  
+	  choice3= rand() % (200) + -200; 
+
+ 
   H=G;
 
   int tester = 0;
   
-  tester = cardeffect(adventurer, choice1, choice2, choice3, &G, 0, 0);
+  tester = cardEffect(adventurer,choice1, choice2, choice3, &G,0,0);
   
 if(G.handCount[G.whoseTurn]!=H.handCount[H.whoseTurn]+2){ //tests to see if Adventurer has the player draw 2 more cards If not, fails the test
     test_Result=0;
@@ -59,5 +67,7 @@ if(G.handCount[G.whoseTurn]!=H.handCount[H.whoseTurn]+2){ //tests to see if Adve
     printf("FAILED!\n");
 	failures++;
   }
- }
+ 
+}
+return failures;
 }

@@ -1,8 +1,8 @@
 /**
 Name: Neale Mason
-Date: 7/20/2018
+Date: 8/4/2018
 Email: masonne@oregonstate.edu
-Description: Here I test the smithy card
+Description: Here I test the Gardens card
 **/
 
 //Includes are from the dominion.c file
@@ -13,34 +13,40 @@ Description: Here I test the smithy card
 #include <math.h>
 #include <stdlib.h>
 
+int choice1, choice2, choice3;
 //following code borrows heavily from playdom.c for implementation
 int main(){
- struct gameState G, H; //using 2 gamestates to keep track of "before card" and "after card"
+ struct gameState G; //using 2 gamestates to keep track of "before card" and "after card"
   int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
            sea_hag, tribute, smithy};
 
-  printf ("Testing SMITHY: ");
+  printf ("Testing Gardens: ");
 
 //int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct gameState *state);
   initializeGame(2, k, 20, &G);
+	int failures = 0;
+	srand(time(NULL));
+	int i=0;
+	
+	for(i=0; i<100; i++){
 
-  int test_Result=1;
-
-  int choice1=0, choice2=0, choice3=0;
-  H=G;
-
-  cardEffect(smithy,choice1, choice2, choice3, &G,0,0);
-
-  if(G.handCount[G.whoseTurn]!=H.handCount[H.whoseTurn]+2){ //tests to see if Smithy has the player draw 3 more cards then discard one or not. If not, fails the test
-    test_Result=0;
-  }
+	  //int test_Result=1;
 
 
-if(test_Result==0){
-    printf("FAILED!\n");
-}else{
-    printf("PASSED!\n");
-}
+	  choice1= rand() % (200) + -200; 
+	  choice2= rand() % (200) + -200;  
+	  choice3= rand() % (200) + -200; 
+	  
+	  
 
 
+	  int tester = cardEffect(gardens,choice1, choice2, choice3, &G,0,0);
+
+		
+		if(tester!=-1){
+			//printf("FAILED!\n");
+			failures++;
+		}
+	}
+	return failures;
 }
