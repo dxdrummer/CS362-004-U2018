@@ -582,7 +582,7 @@ int getCost (int cardNumber) {
 
 int smithyEffect(int currentPlayer, struct gameState *state, int handPos) {
   // +3 Cards
-  for (int i = 0; i < 5; i++) { // BUG, WOOPS, WE GET TO DRAW 5 CARDS???
+  for (int i = 0; i < 3; i++) { 
 	  drawCard(currentPlayer, state);
 	}
 			
@@ -592,7 +592,7 @@ int smithyEffect(int currentPlayer, struct gameState *state, int handPos) {
 }
 
 int adventurerEffect(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int *temphand, int z) {
-  while (drawntreasure < 5) { // BUG, WHOA THAT'S NOT THE RIGHT AMOUNT...
+  while (drawntreasure < 2) { 
     if (state->deckCount[currentPlayer] <1) { // if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
