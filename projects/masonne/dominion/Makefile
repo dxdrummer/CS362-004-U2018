@@ -45,6 +45,7 @@ cardtest3.o: cardtest3.c dominion.o rngs.o
 cardtest4.o: cardtest4.c dominion.o rngs.o
 	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
 	
+<<<<<<< HEAD
 randomtestcard1.o: randomtestcard1.c dominion.o rngs.o
 	gcc -o randomtestcard1 randomtestcard1.c -g dominion.o rngs.o $(CFLAGS)
 	
@@ -55,6 +56,8 @@ randomtestadventurer.o: randomtestadventurer.c dominion.o rngs.o
 	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.o rngs.o $(CFLAGS)
 	
 	
+=======
+>>>>>>> c9ddf737b50e74f811f74776d5660536af51420f
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
@@ -69,7 +72,11 @@ player: player.c interface.o
 
 all: playdom player 
 
+<<<<<<< HEAD
 unittestresults.out: unittest1.o unittest2.o unittest3.o unittest4.o cardtest1.o cardtest2.o cardtest3.o cardtest4.o randomtestadventurer.o randomtestcard1.o randomtestcard2.o dominion.o rngs.o
+=======
+unittestresults.out: unittest1.o unittest2.o unittest3.o unittest4.o cardtest1.o cardtest2.o cardtest3.o cardtest4.o dominion.o rngs.o
+>>>>>>> c9ddf737b50e74f811f74776d5660536af51420f
 		echo "Dominion Unit Test Results:\n" > unittestresults.out
 		
 		echo "Unit test 1 test:" >> unittestresults.out
@@ -111,6 +118,7 @@ unittestresults.out: unittest1.o unittest2.o unittest3.o unittest4.o cardtest1.o
 		cardtest4 >> unittestresults.out
 		gcov cardtest4.c >> unittestresults.out
 		gcov dominion.c >> unittestresults.out
+<<<<<<< HEAD
 		
 		echo "Random Card test 1 test:" >> unittestresults.out
 		randomtestcard1 >> unittestresults.out
@@ -126,6 +134,8 @@ unittestresults.out: unittest1.o unittest2.o unittest3.o unittest4.o cardtest1.o
 		randomtestadventurer >> unittestresults.out
 		gcov randomtestadventurer.c >> unittestresults.out
 		gcov dominion.c >> unittestresults.out
+=======
+>>>>>>> c9ddf737b50e74f811f74776d5660536af51420f
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
